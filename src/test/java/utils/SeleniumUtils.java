@@ -7,8 +7,8 @@ public class SeleniumUtils {
 
 
 
-    public static void scroll(int x, int y, WebDriver driver){
-        JavascriptExecutor js=  (JavascriptExecutor)driver;
+    public static void scroll(int x, int y){
+        JavascriptExecutor js=  (JavascriptExecutor)Driver.getDriver();
         js.executeScript("window.scrollBy("+x+","+y+");");
     }
 }
