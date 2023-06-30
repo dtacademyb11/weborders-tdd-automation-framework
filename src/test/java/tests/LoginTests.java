@@ -5,10 +5,12 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.devtools.idealized.log.Log;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.LoginPage;
 import utils.ConfigReader;
 import utils.Driver;
 
@@ -18,8 +20,7 @@ public class LoginTests extends TestBase {
 
 
     @Test
-    public void positiveLogin(){
-
+    public void positiveLoginNonPageObkectModel(){
 
         Driver.getDriver().get(ConfigReader.getProperty("url"));
         Driver.getDriver().findElement(By.id("ctl00_MainContent_username")).sendKeys(ConfigReader.getProperty("username"), Keys.TAB, ConfigReader.getProperty("password"), Keys.ENTER);
@@ -29,12 +30,23 @@ public class LoginTests extends TestBase {
     }
 
     @Test
+    public void positiveLoginUsingPageObjectModel(){
+
+//        LoginPage loginPage = new LoginPage();
+        new LoginPage().loginWithValidCredentials();
+        Assert.assertEquals(Driver.getDriver().getCurrentUrl(), "http://secure.smartbearsoftware.com/samples/testcomplete12/weborders/");
+
+
+    }
+
+
+    @Test
     public void negativeLoginInvalidUsername(){
 
 
-        Driver.getDriver().get(ConfigReader.getProperty("url"));
-        String username = "Invalid";
-        Driver.getDriver().findElement(By.id("ctl00_MainContent_username")).sendKeys(username, Keys.TAB, ConfigReader.getProperty("password"), Keys.ENTER);
+
+        LoginPage loginPage = new LoginPage();
+        loginPage.login("Invalid", ConfigReader.getProperty("password"));
         Assert.assertNotEquals(Driver.getDriver().getCurrentUrl(), "http://secure.smartbearsoftware.com/samples/testcomplete12/weborders/");
 
 
@@ -44,9 +56,8 @@ public class LoginTests extends TestBase {
     public void negativeLoginInvalidPassword(){
 
 
-        Driver.getDriver().get(ConfigReader.getProperty("url"));
-        String pass = "invalid";
-        Driver.getDriver().findElement(By.id("ctl00_MainContent_username")).sendKeys(ConfigReader.getProperty("username"), Keys.TAB, pass, Keys.ENTER);
+        LoginPage loginPage = new LoginPage();
+        loginPage.login(ConfigReader.getProperty("username"), "Invalid");
         Assert.assertNotEquals(Driver.getDriver().getCurrentUrl(), "http://secure.smartbearsoftware.com/samples/testcomplete12/weborders/");
 
 
@@ -55,10 +66,17 @@ public class LoginTests extends TestBase {
     @Test
     public void negativeLoginNoPassword(){
 
-        Driver.getDriver().get(ConfigReader.getProperty("url"));
-        Driver.getDriver().findElement(By.id("ctl00_MainContent_username")).sendKeys(ConfigReader.getProperty("username"), Keys.TAB, "", Keys.ENTER);
+        LoginPage loginPage = new LoginPage();
+        loginPage.login(ConfigReader.getProperty("username"), "");
         Assert.assertNotEquals(Driver.getDriver().getCurrentUrl(), "http://secure.smartbearsoftware.com/samples/testcomplete12/weborders/");
 
+
+    }
+
+    @Test
+    public void checkUsernameFieldEnabled(){
+
+        Assert.assertTrue(new LoginPage().getUsernameField().isEnabled());
 
     }
 

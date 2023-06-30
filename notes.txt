@@ -12,16 +12,14 @@ Steps of creating TestNG based framework from scratch:
 8. Add the utility class to read from the property file (ConfigReader)
 9. Add the Driver utility class that is implemented using Singleton design pattern
 10. Add Selenium Utility class for re-usable selenium methods and add more methods as needed as you progress in your progress
-
-
-10. Start creating the Page classes for each page of the application and add the WebElements and related methods
-11. Create test cases using the Page classes and their methods
-
+11. Start creating the Page classes for each page of the application and add the WebElements and related methods
+11. Create test cases using the Page classes and their methods according to Page Object Model design pattern
+12. Add a support for running tests through CMD by configuring the Maven Surefire plugin in pom.xml
 13. Add Extent report dependency and configure Test Base class for the report generation
 14. Configure the Driver class to add headless browser options for each browser
 15. Add a support for Cross-Browser testing
 16. Add a support for Parallel Testing
-17. Add a support for running tests through CMD by configuring the Maven Surefire plugin in pom.xml
+
 
 
 
