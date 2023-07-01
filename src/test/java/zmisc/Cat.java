@@ -22,11 +22,11 @@ public class Cat {
 
        // User story branch changes
 
-        System.out.println("User story branch");
+        System.out.println("Hi");
 
 
         // User story 2
 
-        System.out.println("user story 2");
+        System.out.println("Hi 2");
     }
 }
