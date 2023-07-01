@@ -36,6 +36,9 @@ public class AllOrdersPage {
     @FindBy(linkText = "View all orders")
     private WebElement viewAllOrdersLink;
 
+    @FindBy(linkText = "View all products")
+    private WebElement viewAllProductsLink;
+
     @FindBy(xpath = "//table[@class='SampleTable']//tr[2]//td")
     private List<WebElement> cells;
 
@@ -68,5 +71,10 @@ public class AllOrdersPage {
 
     public List<WebElement> getCheckboxes() {
         return checkboxes;
+    }
+
+    public WebElement getViewAllProductsLink() {
+
+        return viewAllProductsLink;
     }
 }

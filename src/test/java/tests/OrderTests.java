@@ -27,7 +27,7 @@ public class OrderTests extends TestBase {
 
 
 
-    @Test
+    @Test (groups = {"smoke"})
     public void verifyDeleteSelectedButton(){
 
 

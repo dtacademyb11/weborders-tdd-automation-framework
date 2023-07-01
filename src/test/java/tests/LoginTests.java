@@ -29,7 +29,7 @@ public class LoginTests extends TestBase {
 
     }
 
-    @Test
+    @Test (groups = {"smoke"})
     public void positiveLoginUsingPageObjectModel(){
 
 //        LoginPage loginPage = new LoginPage();
@@ -40,7 +40,7 @@ public class LoginTests extends TestBase {
     }
 
 
-    @Test
+    @Test (groups = {"smoke"})
     public void negativeLoginInvalidUsername(){
 
 

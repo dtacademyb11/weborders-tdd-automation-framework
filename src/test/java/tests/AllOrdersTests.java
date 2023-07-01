@@ -21,7 +21,7 @@ import java.util.List;
 public class AllOrdersTests extends TestBase {
 
 
-    @Test
+    @Test (groups = {"smoke"})
     public void verifyDeleteSelectedButton(){
 
 
@@ -34,7 +34,7 @@ public class AllOrdersTests extends TestBase {
 
     }
 
-    @Test
+    @Test (groups = {"smoke"})
     public void verifyCheckAllButton(){
 
 

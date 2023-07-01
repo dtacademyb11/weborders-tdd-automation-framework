@@ -9,30 +9,64 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.AllOrdersPage;
+import pages.AllProductsPage;
+import pages.LoginPage;
 import utils.ConfigReader;
 import utils.Driver;
+import utils.SeleniumUtils;
 
 import java.time.Duration;
+import java.util.List;
 
 public class AllProductsTests  extends TestBase{
 
 
 
-
-
-
-    @Test
+    @Test (groups = {"smoke"})
     public void verifyDeleteSelectedButton(){
 
-
-        Driver.getDriver().get(ConfigReader.getProperty("url"));
-        Driver.getDriver().findElement(By.id("ctl00_MainContent_username")).sendKeys(ConfigReader.getProperty("username"), Keys.TAB, ConfigReader.getProperty("password"), Keys.ENTER);
-
+         // non-page
+        new LoginPage().loginWithValidCredentials();
         Driver.getDriver().findElement(By.linkText("View all products")).click();
         WebElement element = Driver.getDriver().findElement(By.tagName("h2"));
         Assert.assertTrue(element.isDisplayed());
 
 
+
+    }
+
+    @Test
+    public void verifyTableColumns(){
+        new LoginPage().loginWithValidCredentials();
+
+        List<String> expected = List.of("Product name", "Price", "Discount");
+
+        new AllOrdersPage().getViewAllProductsLink().click();
+
+        AllProductsPage allProductsPage = new AllProductsPage();
+
+        List<String> actual = SeleniumUtils.getElementsText(allProductsPage.getHeaderCells());
+
+        Assert.assertEquals(actual,expected);
+
+
+
+
+
+    }
+
+    @Test
+    public void verifyTableProductNames(){
+        new LoginPage().loginWithValidCredentials();
+
+        List<String> expected = List.of("MyMoney", "FamilyAlbum", "ScreenSaver");
+
+        new AllOrdersPage().getViewAllProductsLink().click();
+
+        List<String> actual = SeleniumUtils.getElementsText(new AllProductsPage().getProductNameCells());
+
+        Assert.assertEquals(actual,expected);
 
     }
 }

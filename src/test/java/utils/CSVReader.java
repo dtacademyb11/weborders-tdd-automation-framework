@@ -3,6 +3,8 @@ package utils;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,19 +15,14 @@ public class CSVReader {
 
     public static Object[][] readFromCSVFile(String filePath){
 
-
-
         List<List<String>> list = new ArrayList<>();
-        try
-                ( BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath))) {
-
-            bufferedReader.readLine();
-            list = bufferedReader.lines()
+        try {
+            list = Files.lines(Path.of(filePath))
                     .map(s -> new ArrayList<>(Arrays.asList(s.split(","))))
                     .collect(Collectors.toList());
-        }
-        catch(IOException e){
-            System.out.println("File doesn't exist");
+        } catch(IOException e){
+            e.printStackTrace();
+            throw new RuntimeException(e);
         }
 
         Object[][] arr = new Object[list.size()][list.get(0).size()];
