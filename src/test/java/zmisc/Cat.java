@@ -20,8 +20,8 @@ public class Cat {
 
     public static void main(String[] args) {
 
-        System.out.println(Cat.getInstance());
-        System.out.println(Cat.getInstance());
-        System.out.println(Cat.getInstance());
+       // User story branch changes
+
+        System.out.println("User story branch");
     }
 }
