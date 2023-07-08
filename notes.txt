@@ -83,3 +83,7 @@ or
 mvn clean test -D xmlFile=nameOfXmlFile.xml
 
 
+Headless Browser testing is running tests in a headless browser to speed up the test execution time. Another use case is when runnin tests in
+remote linux servers that do not have GUI, running them in headless mode is the only option
+
+Cross Browser testing - testing the application across multiple browsers for compatibility issues
