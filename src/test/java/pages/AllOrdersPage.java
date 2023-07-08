@@ -36,7 +36,7 @@ public class AllOrdersPage {
     @FindBy(linkText = "View all orders")
     private WebElement viewAllOrdersLink;
 
-    @FindBy(linkText = "View all products")
+    @FindBy(linkText = "View all productssdas")
     private WebElement viewAllProductsLink;
 
     @FindBy(xpath = "//table[@class='SampleTable']//tr[2]//td")

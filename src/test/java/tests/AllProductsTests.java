@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.SkipException;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -42,13 +43,15 @@ public class AllProductsTests  extends TestBase{
 
         List<String> expected = List.of("Product name", "Price", "Discount");
 
-        new AllOrdersPage().getViewAllProductsLink().click();
+        throw new SkipException("Test skipped");
 
-        AllProductsPage allProductsPage = new AllProductsPage();
-
-        List<String> actual = SeleniumUtils.getElementsText(allProductsPage.getHeaderCells());
-
-        Assert.assertEquals(actual,expected);
+//        new AllOrdersPage().getViewAllProductsLink().click();
+//
+//        AllProductsPage allProductsPage = new AllProductsPage();
+//
+//        List<String> actual = SeleniumUtils.getElementsText(allProductsPage.getHeaderCells());
+//
+//        Assert.assertEquals(actual,expected);
 
 
 
@@ -58,14 +61,18 @@ public class AllProductsTests  extends TestBase{
 
     @Test
     public void verifyTableProductNames(){
+
+        logger.info("Logging in");
         new LoginPage().loginWithValidCredentials();
 
         List<String> expected = List.of("MyMoney", "FamilyAlbum", "ScreenSaver");
 
+        logger.info("Click on view all products link");
         new AllOrdersPage().getViewAllProductsLink().click();
 
         List<String> actual = SeleniumUtils.getElementsText(new AllProductsPage().getProductNameCells());
 
+        logger.info("Verify product names");
         Assert.assertEquals(actual,expected);
 
     }

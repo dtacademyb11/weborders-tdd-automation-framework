@@ -25,8 +25,6 @@ import java.util.Random;
 public class OrderTests extends TestBase {
 
 
-
-
     @Test (groups = {"smoke"})
     public void verifyDeleteSelectedButton(){
 

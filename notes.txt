@@ -54,3 +54,32 @@ To run tests thru CMD in TestNG framework:
 3. In the command line run the tests with the -D switch, indicating the value for placeholder:
          mvn test -D xmlFile=regression-suite.xml
    or    mvn test -D xmlFile=smoke-test-suite.xml
+
+
+
+TestNG based TDD framework components:
+
+Java - write framework code
+Maven - run the test cases from command line, building the project, defining the framework structure, manage dependencies
+TestNG - run the test cases, organize the TDD framework via annotations, configure and organize test case runs through xml files
+IntelliJ - write the test cases, test them, fix the errors, speed up and streamline the development process
+Git/GitHub - version control the code, collaborate with others
+Selenium - interact with the web pages, to create UI test cases
+Java Faker - provides mock data to our tests
+properties file - store the project's key global information such as environment variables, usernames, passwords, API keys. Prevent exposing sensitive data
+gitignore file - prevent files/folders from being committed into GitHub
+utility classes - store common reusable methods that are used framework
+testbase class - store the common setup and teardown configuration actions for tests
+singleton design pattern - make the WebDriver object a single object during the execution and prevent multiple instantiation
+page object model design pattern - make the page related code, such as finding and interacting with webelements, maintainable and scalable
+page factory class - make the page object model code more readable and shorter through @FindBy annotations
+maven surefire plugin - configure how to run the tests from command file
+
+
+How to run the test cases in our framework?
+
+mvn test -D xmlFile=nameOfXmlFile.xml
+or
+mvn clean test -D xmlFile=nameOfXmlFile.xml
+
+
