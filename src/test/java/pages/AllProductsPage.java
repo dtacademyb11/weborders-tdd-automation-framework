@@ -28,5 +28,8 @@ public class AllProductsPage {
     @FindBy(xpath = "//table[@class='ProductsTable']//tr//td[1]")
     private List<WebElement> productNameCells;
 
+    @FindBy(xpath = "//table[@class='ProductsTable']//tr//td[1]")
+    private List<WebElement> testingDeleteThisLater;
+
 
 }
