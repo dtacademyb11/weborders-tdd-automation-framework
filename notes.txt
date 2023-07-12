@@ -97,6 +97,32 @@ We implement it in our framework by passing the browser type through command lin
                                      We can use batch file/shell script file to execute all commands at once
 
 
+Parallel Testing:
+Parallel testing involves running multiple automated tests simultaneously on separate browsers.
+This approach can help to speed up the testing process, as multiple tests can be executed at the same time, rather than waiting for each test to finish before starting the next one.
+Parallel testing is especially useful when dealing with large test suites like regression suite that takes a long time to run.
+  Parallel Tests - running groups of tests in parallel to reduce execution time and get faster feedback
+                     How to implement:
+                     1. Setup Selenium Grid with Hub and multiple nodes and direct your tests to the central Hub which automatically distributes
+                        the tests among nodes.
+                        Pros: More scalable, reliable, little maintenance after initial setup.
+                        Cons: Complex to setup, can be more costly than native setup, especially when using third party cloud services
+                               such as SauceLabs, BrowserStack.
+                     2. Setup natively through TestNG xml file.
+                        a)Add parallel attribute to <suite> tag along with thread-count attribute where you indicate the amount of threads
+                        Default thread-count is 5 if not given.
+                        Parallel attribute can take methods, classes and tests.
+                        2)Adjust the singleton Driver class with ThreadLocal<WebDriver> to give each thread its own WebDriver,
+                           And we made the initialization and quitting methods of drivers synchronized
+In Java, synchronization refers to the process of controlling the access of multiple threads to shared resources, such as variables, methods, or blocks of code.
+When multiple threads access shared resources simultaneously, it can lead to race conditions, data inconsistency, and other problems.
+Synchronization ensures that your code is thread-safe and only one thread at a time can access the shared resources, preventing these issues. In Java methods and code blocks can be synchronized.
+
+
+
+
+
+
 
 Regression Test Suite: A regression test suite is a collection of automated tests that are designed to verify that changes or updates to an application have not introduced any new defects or bugs.
 Regression tests are typically run after a new feature or a major bug fix has been implemented, to ensure that the existing functionality of the application has not been impacted.
