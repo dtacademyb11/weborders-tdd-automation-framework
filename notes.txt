@@ -86,4 +86,12 @@ mvn clean test -D xmlFile=nameOfXmlFile.xml
 Headless Browser testing is running tests in a headless browser to speed up the test execution time. Another use case is when runnin tests in
 remote linux servers that do not have GUI, running them in headless mode is the only option
 
-Cross Browser testing - testing the application across multiple browsers for compatibility issues
+
+Cross-Browser Testing - Cross-browser testing involves testing web applications on multiple web browsers, such as Chrome, Firefox, Safari, and Edge, to ensure that the application behaves consistently across different browsers.
+This is important because different browsers may interpret HTML, CSS, and JavaScript differently, which can lead to inconsistencies in the application's behavior.
+Cross-browser testing helps to ensure that the application works as expected on all major browsers, improving the user experience and reducing the risk of bugs and errors.
+
+How did you implement Cross-browser testing in your framework?
+We implement it in our framework by passing the browser type through command line like: mvn test -D browser=chrome
+                                     And we simply execute multiple commands for different browser types
+                                     We can use batch file/shell script file to execute all commands at once
