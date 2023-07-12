@@ -95,3 +95,14 @@ How did you implement Cross-browser testing in your framework?
 We implement it in our framework by passing the browser type through command line like: mvn test -D browser=chrome
                                      And we simply execute multiple commands for different browser types
                                      We can use batch file/shell script file to execute all commands at once
+
+
+
+Regression Test Suite: A regression test suite is a collection of automated tests that are designed to verify that changes or updates to an application have not introduced any new defects or bugs.
+Regression tests are typically run after a new feature or a major bug fix has been implemented, to ensure that the existing functionality of the application has not been impacted.
+Regression tests are usually more comprehensive and cover a larger area of the application compared to other types of tests, as they need to ensure that the application is still functioning correctly even after changes have been made.
+
+Smoke Test Suite: A smoke test suite is a set of basic, high-level tests that are designed to quickly verify that the major functionalities of an application are working as expected.
+Smoke tests are usually run after a new build or release of an application to ensure that the application is stable enough to proceed with further testing.
+Smoke tests are typically run first and quickly to catch any major issues before running more comprehensive tests.
+
