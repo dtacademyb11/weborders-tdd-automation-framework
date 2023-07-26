@@ -28,7 +28,7 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
 
       - name: Run Smoke Tests
-        run: mvn -DxmlFile=smoke-tests.xml
+        run: mvn test -DxmlFile=smoke-tests.xml
 
       - name: Upload Test Results
         if: always()
