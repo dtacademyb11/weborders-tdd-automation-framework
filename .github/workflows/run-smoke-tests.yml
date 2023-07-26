@@ -39,7 +39,7 @@ jobs:
             sudo chown root:root /usr/bin/chromedriver
             sudo chmod +x /usr/bin/chromedriver
       - name: Run Smoke Tests
-        run: mvn test -DxmlFile=login-tests.xml
+        run: mvn test -DxmlFile=login-tests.xml -D browser=chromeheadless
 
       - name: Upload Test Results
         if: always()
