@@ -26,13 +26,24 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
-
+      - name: Install Chrome and ChromeDriver
+        run: |
+            sudo apt-get install -y unzip xvfb libxi6 libgconf-2-4
+            sudo curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add
+            echo "deb http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee -a /etc/apt/sources.list.d/google-chrome.list
+            sudo apt-get -y update
+            sudo apt-get -y install google-chrome-stable
+            wget https://chromedriver.storage.googleapis.com/$(curl https://chromedriver.storage.googleapis.com/LATEST_RELEASE)/chromedriver_linux64.zip
+            unzip chromedriver_linux64.zip
+            sudo mv chromedriver /usr/bin/chromedriver
+            sudo chown root:root /usr/bin/chromedriver
+            sudo chmod +x /usr/bin/chromedriver
       - name: Run Smoke Tests
-        run: mvn test -DxmlFile=smoke-tests.xml
+        run: mvn test -DxmlFile=login-tests.xml
 
       - name: Upload Test Results
         if: always()
         uses: actions/upload-artifact@v2
         with:
           name: Smoke Test Results
-          path: target/extent-reports/*.html
+          path: target/extentReports/report.html
